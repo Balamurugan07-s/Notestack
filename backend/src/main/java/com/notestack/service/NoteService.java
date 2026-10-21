@@ -149,10 +149,24 @@ public class NoteService {
             throw new AccessDeniedException("You are not authorized to delete this note");
         }
 
+        // Delete all dependent child records first to satisfy foreign key constraints
+        bookmarkRepository.deleteByNoteId(id);
+        ratingRepository.deleteByNoteId(id);
+        commentRepository.deleteByNoteId(id);
+        reportRepository.deleteByNoteId(id);
+
+        // Clear tags association
+        if (note.getTags() != null) {
+            note.getTags().clear();
+            noteRepository.save(note);
+        }
+
         // Delete physical file
         if (note.getFileUrl() != null && note.getFileUrl().startsWith("/uploads/")) {
             String filename = note.getFileUrl().substring("/uploads/".length());
-            storageService.delete(filename);
+            try {
+                storageService.delete(filename);
+            } catch (Exception ignored) {}
         }
 
         noteRepository.delete(note);

@@ -16,4 +16,8 @@ public interface RatingRepository extends JpaRepository<Rating, Long> {
     Double calculateAverageRating(@Param("noteId") Long noteId);
 
     long countByNoteId(Long noteId);
+
+    @org.springframework.data.jpa.repository.Modifying
+    @Query("DELETE FROM Rating r WHERE r.note.id = :noteId")
+    void deleteByNoteId(@Param("noteId") Long noteId);
 }
