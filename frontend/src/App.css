@@ -1,0 +1,65 @@
+/* NoteStack Global App Styles - No spinning React logo animations */
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1 0 auto;
+}
+
+/* Navbar logo styling */
+.navbar-brand-logo {
+  height: 38px;
+  width: 38px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.navbar-brand:hover .navbar-brand-logo {
+  transform: scale(1.05);
+}
+
+.brand-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  color: var(--ns-primary);
+}
+
+/* Loading Screen Animation */
+.notestack-loader-container {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.notestack-pulse-logo {
+  width: 72px;
+  height: 72px;
+  animation: pulseLogo 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes pulseLogo {
+  0% {
+    transform: scale(0.96);
+    filter: drop-shadow(0 4px 8px rgba(79, 70, 229, 0.2));
+  }
+  100% {
+    transform: scale(1.06);
+    filter: drop-shadow(0 8px 24px rgba(124, 58, 237, 0.4));
+  }
+}
+
+/* Footer styling */
+.footer-ns {
+  background-color: var(--ns-bg-surface);
+  border-top: 1px solid var(--ns-border);
+  padding: 2.5rem 0 1.5rem;
+}

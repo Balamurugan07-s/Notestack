@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  mysqldb:
+    image: mysql:8.0
+    container_name: notestack-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: scott
+      MYSQL_DATABASE: notestack_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./backend/src/main/resources/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql:ro
+      - ./backend/src/main/resources/data.sql:/docker-entrypoint-initdb.d/2-data.sql:ro
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: notestack-backend
+    restart: always
+    depends_on:
+      - mysqldb
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/notestack_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: scott
+      FRONTEND_URL: http://localhost:3000
+      FILE_UPLOAD_DIR: uploads
+    ports:
+      - "8080:8080"
+    volumes:
+      - backend_uploads:/app/uploads
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_API_URL: http://localhost:8080/api
+        REACT_APP_BACKEND_URL: http://localhost:8080
+    container_name: notestack-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+volumes:
+  mysql_data:
+  backend_uploads:

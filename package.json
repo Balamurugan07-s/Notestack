@@ -1,0 +1,12 @@
+{
+  "name": "notestack-root",
+  "version": "1.0.0",
+  "description": "NoteStack - Student Notes Sharing Platform root scripts",
+  "scripts": {
+    "frontend": "cd frontend && npm start",
+    "backend": "cd backend && mvn spring-boot:run",
+    "install:frontend": "cd frontend && npm install",
+    "dev": "npm run frontend",
+    "start": "npm run frontend"
+  }
+}

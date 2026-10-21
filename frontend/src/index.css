@@ -1,0 +1,178 @@
+:root {
+  /* Brand Theme Colors */
+  --ns-primary: #4F46E5;
+  --ns-primary-hover: #4338CA;
+  --ns-primary-light: #EEF2FF;
+  --ns-violet: #7C3AED;
+  --ns-violet-hover: #6D28D9;
+  --ns-violet-light: #F5F3FF;
+  --ns-amber: #F59E0B;
+  --ns-green: #10B981;
+  --ns-light: #C7D2FE;
+  
+  /* Gradients */
+  --ns-gradient-primary: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+  --ns-gradient-card: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 100%);
+  --ns-gradient-hero: linear-gradient(135deg, #EEF2FF 0%, #F5F3FF 50%, #FAF5FF 100%);
+
+  /* Neutrals & Surfaces */
+  --ns-bg-main: #F8FAFC;
+  --ns-bg-surface: #FFFFFF;
+  --ns-bg-subtle: #F1F5F9;
+  --ns-border: #E2E8F0;
+  --ns-border-subtle: #F1F5F9;
+  
+  /* Typography Colors */
+  --ns-text-primary: #0F172A;
+  --ns-text-secondary: #475569;
+  --ns-text-muted: #94A3B8;
+
+  /* Shadows */
+  --ns-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --ns-shadow-md: 0 4px 6px -1px rgba(79, 70, 229, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --ns-shadow-lg: 0 10px 15px -3px rgba(79, 70, 229, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --ns-shadow-glow: 0 0 20px rgba(79, 70, 229, 0.25);
+
+  --ns-radius-sm: 8px;
+  --ns-radius-md: 12px;
+  --ns-radius-lg: 16px;
+  --ns-radius-xl: 24px;
+}
+
+[data-theme="dark"] {
+  --ns-bg-main: #0B0F19;
+  --ns-bg-surface: #111827;
+  --ns-bg-subtle: #1F2937;
+  --ns-border: #1F2937;
+  --ns-border-subtle: #374151;
+  
+  --ns-text-primary: #F8FAFC;
+  --ns-text-secondary: #CBD5E1;
+  --ns-text-muted: #64748B;
+
+  --ns-primary-light: rgba(79, 70, 229, 0.15);
+  --ns-violet-light: rgba(124, 58, 237, 0.15);
+  --ns-gradient-card: linear-gradient(180deg, rgba(31, 41, 55, 0.8) 0%, rgba(17, 24, 39, 0.95) 100%);
+  --ns-gradient-hero: linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #0F172A 100%);
+  --ns-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --ns-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--ns-bg-main);
+  color: var(--ns-text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-weight: 700;
+  color: var(--ns-text-primary);
+}
+
+/* Custom NoteStack Classes */
+.bg-gradient-primary {
+  background: var(--ns-gradient-primary) !important;
+}
+
+.text-gradient {
+  background: var(--ns-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-primary-ns {
+  background: var(--ns-gradient-primary);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--ns-radius-md);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-primary-ns:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+  color: #fff;
+}
+
+.btn-outline-ns {
+  background: transparent;
+  border: 2px solid var(--ns-primary);
+  color: var(--ns-primary);
+  font-weight: 600;
+  padding: 0.55rem 1.35rem;
+  border-radius: var(--ns-radius-md);
+  transition: all 0.2s ease;
+}
+
+.btn-outline-ns:hover {
+  background: var(--ns-primary);
+  color: #fff;
+}
+
+.card-ns {
+  background: var(--ns-bg-surface);
+  border: 1px solid var(--ns-border);
+  border-radius: var(--ns-radius-lg);
+  box-shadow: var(--ns-shadow-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card-ns:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ns-shadow-lg);
+  border-color: var(--ns-light);
+}
+
+.badge-ns-dept {
+  background-color: var(--ns-primary-light);
+  color: var(--ns-primary);
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 9999px;
+}
+
+.badge-ns-cat {
+  background-color: var(--ns-violet-light);
+  color: var(--ns-violet);
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 9999px;
+}
+
+.badge-ns-rating {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: var(--ns-amber);
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 9999px;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] .glass-panel {
+  background: rgba(17, 24, 39, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
