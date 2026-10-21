@@ -39,18 +39,6 @@ const LoginPage = () => {
     }
   };
 
-  const fillDemoStudent = () => {
-    setEmail('student@notestack.edu');
-    setPassword('Student@123');
-    setError('');
-  };
-
-  const fillDemoAdmin = () => {
-    setEmail('admin@notestack.edu');
-    setPassword('Admin@123');
-    setError('');
-  };
-
   const handleForgotSubmit = async (e) => {
     e.preventDefault();
     setForgotLoading(true);
@@ -79,32 +67,6 @@ const LoginPage = () => {
                 <img src={logo} alt="NoteStack" width="56" height="56" className="mb-2" />
                 <h3 className="fw-bold mb-1">Welcome Back</h3>
                 <p className="text-secondary small">Log in to access your notes, uploads, and saved materials</p>
-              </div>
-
-              {/* Demo Credentials Quick-Fill Badges */}
-              <div className="p-3 mb-4 rounded-3 border" style={{ backgroundColor: 'var(--ns-bg-subtle)' }}>
-                <div className="small fw-bold text-secondary mb-2 d-flex align-items-center gap-1">
-                  <i className="bi bi-lightning-charge-fill text-warning"></i>
-                  <span>Quick Demo Logins (1-Click Fill):</span>
-                </div>
-                <div className="d-flex flex-wrap gap-2">
-                  <button
-                    type="button"
-                    onClick={fillDemoStudent}
-                    className="btn btn-outline-primary btn-sm rounded-pill px-3 py-1 text-nowrap"
-                    style={{ fontSize: '0.75rem' }}
-                  >
-                    <i className="bi bi-mortarboard-fill me-1"></i> Student Demo
-                  </button>
-                  <button
-                    type="button"
-                    onClick={fillDemoAdmin}
-                    className="btn btn-outline-danger btn-sm rounded-pill px-3 py-1 text-nowrap"
-                    style={{ fontSize: '0.75rem' }}
-                  >
-                    <i className="bi bi-shield-lock-fill me-1"></i> Admin Demo
-                  </button>
-                </div>
               </div>
 
               {/* Error Message */}
@@ -200,9 +162,9 @@ const LoginPage = () => {
                     {forgotMessage}
                     {resetTokenInfo && (
                       <div className="mt-2 p-2 bg-white rounded border small">
-                        <strong>Demo Token:</strong> <code>{resetTokenInfo}</code>
+                        <strong>Reset Token:</strong> <code>{resetTokenInfo}</code>
                         <div className="text-muted mt-1">
-                          You can test password reset directly with this token.
+                          Copy this token to reset your password.
                         </div>
                       </div>
                     )}
